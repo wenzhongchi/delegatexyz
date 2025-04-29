@@ -45,7 +45,6 @@ export const Header: FC = () => {
             <h1 className="hidden sm:block text-white text-xl font-bold">Delegate.xyz</h1>
           </Link>
         </div>
-        {/* TODO connect wallet */}
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Button size="icon" variant="ghost">
