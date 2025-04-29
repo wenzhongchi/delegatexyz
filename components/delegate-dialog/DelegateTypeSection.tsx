@@ -57,7 +57,7 @@ const DelegateTypeSection: FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 mt-6">
+    <div className="flex flex-col gap-3 mt-6">
       <div className="w-full text-3xl font-light">What type do you want to delegate?</div>
       <RadioGroup
         value={delegateType}
@@ -77,8 +77,10 @@ const DelegateTypeSection: FC = () => {
               onClick={() => handleSetDelegateType(type.key)}
             >
               <CardHeader>
-                <div className={cn('p-2 rounded-full w-fit', type.iconBgColor)}>{type.icon}</div>
-                <CardTitle className={type.textColor}>{type.label}</CardTitle>
+                <CardTitle className="flex flex-row items-center gap-x-2">
+                  <div className={cn('p-2 rounded-full w-fit', type.iconBgColor)}>{type.icon}</div>
+                  <div className={type.textColor}>{type.label}</div>
+                </CardTitle>
                 <CardDescription>{type.info}</CardDescription>
               </CardHeader>
               <CardContent className="hidden sm:block">

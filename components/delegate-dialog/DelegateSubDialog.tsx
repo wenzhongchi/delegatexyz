@@ -1,7 +1,7 @@
 import { FC, useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
+import { ArrowRightIcon } from 'lucide-react';
 
 import { Button } from '../ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '../ui/dialog';
@@ -10,7 +10,7 @@ import { Progress } from '../ui/progress';
 import { cn } from '@/lib/utils';
 import { useDelegateStore } from '@/stores/delegate-store';
 
-const MAX_STEP = 3;
+const MAX_STEP = 2;
 
 const DelegateTypeSection = dynamic(() => import('./DelegateTypeSection'));
 const DelegateForm = dynamic(() => import('./DelegateForm'));
@@ -30,7 +30,7 @@ export const DelegateSubDialog: FC = () => {
   }, [subOpen]);
 
   const onNextStep = () => {
-    if (step === 3) {
+    if (step === 2) {
       setSubOpen(false);
       return;
     }
@@ -44,15 +44,8 @@ export const DelegateSubDialog: FC = () => {
   };
 
   const isNextDisabled = useMemo(() => {
-    return step === 2 && !isFormValidate;
+    return step === 1 && !isFormValidate;
   }, [step, isFormValidate]);
-
-  const onPreviousStep = () => {
-    if (step === 3) {
-      setFormValidate(false);
-    }
-    setStep((prev) => Math.max(1, prev - 1));
-  };
 
   return (
     <Dialog open={subOpen} onOpenChange={setSubOpen}>
@@ -67,23 +60,20 @@ export const DelegateSubDialog: FC = () => {
           <DialogTitle>Choose delegate type</DialogTitle>
           <DialogDescription>Choose delegate type</DialogDescription>
         </VisuallyHidden>
-        <div className="flex-1 min-h-0 overflow-y-auto">
-          {step === 1 && <DelegateTypeSection />}
-          {step === 2 && (
-            <DelegateForm
-              onFormUpdate={({ isValid }) => {
-                setFormValidate(isValid);
-              }}
-            />
+        <div className="flex-1 min-h-0 overflow-y-auto stylized-scroll">
+          {step === 1 && (
+            <>
+              <DelegateTypeSection />
+              <DelegateForm
+                onFormUpdate={({ isValid }) => {
+                  setFormValidate(isValid);
+                }}
+              />
+            </>
           )}
-          {step === 3 && <FinalRound />}
+          {step === 2 && <FinalRound />}
         </div>
         <div className="w-full flex items-end justify-end gap-2 mt-6">
-          {step === 2 && (
-            <Button className=" cursor-pointer" onClick={onPreviousStep}>
-              <ArrowLeftIcon /> Back
-            </Button>
-          )}
           <Button
             variant="outline"
             className={cn(isNextDisabled ? 'cursor-not-allowed' : 'cursor-pointer')}
@@ -94,7 +84,7 @@ export const DelegateSubDialog: FC = () => {
               'Fill all required fields'
             ) : (
               <span className="flex items-center gap-1">
-                {step < 3 ? 'Go forward' : 'Finish'}
+                {step === 1 ? 'Go forward' : 'Finish'}
                 <ArrowRightIcon />
               </span>
             )}

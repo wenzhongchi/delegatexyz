@@ -78,9 +78,8 @@ const DelegateForm: FC<{
 
   return (
     <>
-      <div className="w-full text-3xl font-light uppercase mt-6 mb-3">{delegateType}</div>
       <Form {...form}>
-        <form className="space-y-5">
+        <form className="space-y-5 mt-5">
           {/* Wallet address */}
           <FormField
             control={form.control}
