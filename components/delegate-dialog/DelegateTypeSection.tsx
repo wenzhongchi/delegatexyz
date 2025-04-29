@@ -62,7 +62,7 @@ const DelegateTypeSection: FC = () => {
       <RadioGroup
         value={delegateType}
         onValueChange={handleSetDelegateType}
-        className="grid grid-cols-3 gap-2"
+        className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1"
       >
         {DelegateTypes.map((type) => (
           <label key={type.key} htmlFor={type.key} className="h-full">
@@ -81,7 +81,7 @@ const DelegateTypeSection: FC = () => {
                 <CardTitle className={type.textColor}>{type.label}</CardTitle>
                 <CardDescription>{type.info}</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="hidden sm:block">
                 <p>{type.description}</p>
               </CardContent>
             </Card>

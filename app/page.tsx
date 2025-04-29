@@ -16,17 +16,16 @@ export default function Home() {
   };
   return (
     <main className="min-h-screen bg-black text-white h-svh flex flex-col">
-      {/* button */}
-      <Button
+      <div
         onClick={handleOpenDelegateModal}
-        className="flex w-full min-h-14 items-center justify-between gap-1 p-3 text-white  bg-de-light rounded-none hover:bg-de-light cursor-pointer"
+        className="flex w-full min-h-auto items-center justify-between gap-1 p-3 text-white  bg-de-light rounded-none hover:bg-de-light cursor-pointer"
       >
         <div className="flex-1 text-center">
           Migrate your assets & delegations to Delegate v2 to take advantage of lower gas costs &
           more features
         </div>
         <MoveRightIcon className="w-10 opacity-70 shrink-0" />
-      </Button>
+      </div>
       {/* header */}
       <Header />
       <section className="z-10 flex w-full flex-col justify-between h-svh overflow-visible">

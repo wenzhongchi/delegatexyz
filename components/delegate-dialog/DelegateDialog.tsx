@@ -46,6 +46,7 @@ export function DelegateDialog() {
               placeholder="Search for a collection, wallet, cluster, or ENS"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              className="w-full"
             />
             <div className="rounded border p-2 space-y-1">
               {query?.length > 0 ? (
@@ -73,9 +74,9 @@ export function DelegateDialog() {
                 <Button
                   onClick={() => setSubOpen(true)}
                   variant="ghost"
-                  className="w-full justify-start text-left flex gap-3 rounded-none px-3 py-2 h-auto cursor-pointer"
+                  className="flex-wrap w-full justify-start text-left flex gap-3 rounded-none px-3 py-2 h-auto cursor-pointer"
                 >
-                  <div className="p-3 rounded-full bg-de-shadow text-black">
+                  <div className="p-3 rounded-full bg-de-shadow text-black hidden sm:block">
                     <FileTextIcon className="w-4 h-4" />
                   </div>
                   <div>

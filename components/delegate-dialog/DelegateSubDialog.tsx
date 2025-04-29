@@ -58,8 +58,8 @@ export const DelegateSubDialog: FC = () => {
     <Dialog open={subOpen} onOpenChange={setSubOpen}>
       <DialogContent
         className={cn(
-          'top-[10vh] translate-y-0  py-4 [&>button.absolute]:hidden',
-          step === 1 && '!max-w-[900px]'
+          'top-[10vh] translate-y-0  py-4 [&>button.absolute]:hidden max-h-[80vh] flex flex-col',
+          step === 1 && 'sm:!max-w-[900px]'
         )}
       >
         <Progress value={(step / MAX_STEP) * 100} className="h-1" />
@@ -67,15 +67,17 @@ export const DelegateSubDialog: FC = () => {
           <DialogTitle>Choose delegate type</DialogTitle>
           <DialogDescription>Choose delegate type</DialogDescription>
         </VisuallyHidden>
-        {step === 1 && <DelegateTypeSection />}
-        {step === 2 && (
-          <DelegateForm
-            onFormUpdate={({ isValid, values }) => {
-              setFormValidate(isValid);
-            }}
-          />
-        )}
-        {step === 3 && <FinalRound />}
+        <div className="flex-1 min-h-0 overflow-y-auto">
+          {step === 1 && <DelegateTypeSection />}
+          {step === 2 && (
+            <DelegateForm
+              onFormUpdate={({ isValid, values }) => {
+                setFormValidate(isValid);
+              }}
+            />
+          )}
+          {step === 3 && <FinalRound />}
+        </div>
         <div className="w-full flex items-end justify-end gap-2 mt-6">
           {step === 2 && (
             <Button className=" cursor-pointer" onClick={onPreviousStep}>

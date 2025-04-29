@@ -15,8 +15,8 @@ import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
 import { useDelegateStore } from '@/stores/delegate-store';
 import { DelegateType } from '@/types/enum';
-import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from '../ui/tooltip';
 import { CircleHelpIcon } from 'lucide-react';
+import { TooltipWithStopPropagation } from './TooltipWithStopPropogation';
 
 const walletAddress = z
   .string()
@@ -160,16 +160,9 @@ const DelegateForm: FC<{
                   <Switch checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <FormLabel>Enable Shadow NFT</FormLabel>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <CircleHelpIcon className="w-4 h-4" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      Mirror key ownership rights to a Shadow NFT for tracking or visibility.
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <TooltipWithStopPropagation content="Mirror key ownership rights to a Shadow NFT for tracking or visibility.">
+                  <CircleHelpIcon className="w-4 h-4" />
+                </TooltipWithStopPropagation>
               </FormItem>
             )}
           />
@@ -185,17 +178,12 @@ const DelegateForm: FC<{
                     <Switch checked={field.value} onCheckedChange={field.onChange} />
                   </FormControl>
                   <FormLabel>Mint delegate token using secure escrow</FormLabel>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <CircleHelpIcon className="w-4 h-4" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        Mint a special delegate token via escrow for added security and
-                        revocability.
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+                  <TooltipWithStopPropagation
+                    content="Mint a special delegate token via escrow for added security and
+                        revocability."
+                  >
+                    <CircleHelpIcon className="w-4 h-4" />
+                  </TooltipWithStopPropagation>
                 </FormItem>
               )}
             />
