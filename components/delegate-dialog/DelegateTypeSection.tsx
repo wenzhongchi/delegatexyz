@@ -49,7 +49,7 @@ const DelegateTypes = [
   },
 ] as const;
 
-export const DelegateTypeSection: FC = () => {
+const DelegateTypeSection: FC = () => {
   const { delegateType, setDelegateType } = useDelegateStore();
 
   const handleSetDelegateType = (value: string) => {
@@ -91,3 +91,5 @@ export const DelegateTypeSection: FC = () => {
     </div>
   );
 };
+
+export default DelegateTypeSection;

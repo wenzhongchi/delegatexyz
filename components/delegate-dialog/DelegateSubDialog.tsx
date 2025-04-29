@@ -7,12 +7,14 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from '../ui/dia
 import { Progress } from '../ui/progress';
 
 import { useDelegateStore } from '@/stores/delegate-store';
-import { DelegateTypeSection } from './DelegateTypeSection';
-import { FinalRound } from './FinalRound';
-import { DelegateForm } from './DelegateForm';
 import { cn } from '@/lib/utils';
+import dynamic from 'next/dynamic';
 
 const MAX_STEP = 3;
+
+const DelegateTypeSection = dynamic(() => import('./DelegateTypeSection'));
+const DelegateForm = dynamic(() => import('./DelegateForm'));
+const FinalRound = dynamic(() => import('./FinalRound'));
 
 export const DelegateSubDialog: FC = () => {
   const { subOpen, setSubOpen } = useDelegateStore();

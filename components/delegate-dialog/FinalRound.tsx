@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
 
-export const FinalRound = () => {
+const FinalRound = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -31,3 +31,5 @@ export const FinalRound = () => {
     </div>
   );
 };
+
+export default FinalRound;

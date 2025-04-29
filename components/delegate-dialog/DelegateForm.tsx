@@ -48,7 +48,7 @@ type FormValues = z.infer<(typeof formSchemas)['wallet']> &
   Partial<z.infer<(typeof formSchemas)['contract']>> &
   Partial<z.infer<(typeof formSchemas)['asset']>>;
 
-export const DelegateForm: FC<{
+const DelegateForm: FC<{
   onFormUpdate?: (params: { isValid: boolean; values: FormValues }) => void;
 }> = ({ onFormUpdate }) => {
   const { delegateType } = useDelegateStore();
@@ -205,3 +205,5 @@ export const DelegateForm: FC<{
     </>
   );
 };
+
+export default DelegateForm;
