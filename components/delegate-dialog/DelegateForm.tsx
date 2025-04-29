@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useFormState } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import {
@@ -64,20 +64,14 @@ export const DelegateForm: FC<{
     },
     mode: 'onChange',
   });
+  const { isValid } = form.formState;
 
   useEffect(() => {
-    const subscription = form.watch((_, { name }) => {
-      onFormUpdate?.({
-        isValid: form.formState.isValid,
-        values: form.getValues(),
-      });
+    onFormUpdate?.({
+      isValid: isValid,
+      values: form.getValues(),
     });
-    return () => subscription.unsubscribe();
-  }, [form, onFormUpdate]);
-
-  // useEffect(() => {
-  //   form.trigger();
-  // }, []);
+  }, [form, isValid, onFormUpdate]);
 
   return (
     <>

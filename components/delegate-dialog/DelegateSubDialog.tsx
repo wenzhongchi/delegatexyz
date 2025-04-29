@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 
@@ -20,7 +20,18 @@ export const DelegateSubDialog: FC = () => {
 
   const [step, setStep] = useState(1);
 
+  useEffect(() => {
+    if (subOpen) {
+      setStep(1);
+      setFormValidate(false);
+    }
+  }, [subOpen]);
+
   const onNextStep = () => {
+    if (step === 3) {
+      setSubOpen(false);
+      return;
+    }
     if (step === 1) {
       setFormValidate(false);
     }
@@ -58,14 +69,13 @@ export const DelegateSubDialog: FC = () => {
         {step === 2 && (
           <DelegateForm
             onFormUpdate={({ isValid, values }) => {
-              console.log('current values', values);
               setFormValidate(isValid);
             }}
           />
         )}
         {step === 3 && <FinalRound />}
         <div className="w-full flex items-end justify-end gap-2 mt-6">
-          {step > 1 && (
+          {step === 2 && (
             <Button className=" cursor-pointer" onClick={onPreviousStep}>
               <ArrowLeftIcon /> Back
             </Button>
@@ -80,7 +90,7 @@ export const DelegateSubDialog: FC = () => {
               'Fill all required fields'
             ) : (
               <span className="flex items-center gap-1">
-                Next Step
+                {step < 3 ? 'Go forward' : 'Finish'}
                 <ArrowRightIcon />
               </span>
             )}
