@@ -120,6 +120,7 @@
   --color-de-green: #04724d;
   --color-de-purple: #a255ef;
   --color-de-blue: #2b7fff;
+  --color-de-dialog-bg: #a3a3a3;
 }
 @layer base {
   * {

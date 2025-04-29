@@ -1,15 +1,26 @@
+'use client';
 import { CogIcon, MoveRightIcon, RainbowIcon, SearchIcon, ShieldPlusIcon } from 'lucide-react';
 
-import { Footer } from '@/components/layout/Footer';
+import { DelegateDialog } from '@/components/delegate-dialog/DelegateDialog';
+// import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useDelegateStore } from '@/stores/delegate-store';
 
 export default function Home() {
+  const { setOpen } = useDelegateStore();
+
+  const handleOpenDelegateModal = () => {
+    setOpen(true);
+  };
   return (
     <main className="min-h-screen bg-black text-white h-svh flex flex-col">
       {/* button */}
-      <Button className="flex w-full min-h-14 items-center justify-between gap-1 p-3 text-white  bg-de-light rounded-none hover:bg-de-light cursor-pointer">
+      <Button
+        onClick={handleOpenDelegateModal}
+        className="flex w-full min-h-14 items-center justify-between gap-1 p-3 text-white  bg-de-light rounded-none hover:bg-de-light cursor-pointer"
+      >
         <div className="flex-1 text-center">
           Migrate your assets & delegations to Delegate v2 to take advantage of lower gas costs &
           more features
@@ -28,7 +39,10 @@ export default function Home() {
               prove token ownership, and more from your hot wallet.
             </p>
             <div className="mt-6 mx-auto w-[90%] max-w-lg">
-              <Button className="h-auto w-full flex items-center cursor-pointer justify-start gap-3 rounded-xl border border-red-50 bg-white p-5 text-lg leading-0 font-medium shadow-md text-slate-900">
+              <Button
+                onClick={handleOpenDelegateModal}
+                className="h-auto w-full flex items-center cursor-pointer justify-start gap-3 rounded-xl border border-red-50 bg-white p-5 text-lg leading-0 font-medium shadow-md text-slate-900"
+              >
                 <div className="rounded-full bg-de-shadow p-2">
                   <SearchIcon className="w-4 h-4" />
                 </div>
@@ -75,6 +89,8 @@ export default function Home() {
           {/* <Footer /> */}
         </div>
       </section>
+
+      <DelegateDialog />
     </main>
   );
 }
