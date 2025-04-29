@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useDelegateStore } from '@/stores/delegate-store';
+import { Footer } from '@/components/layout/Footer';
 
 export default function Home() {
   const { setOpen } = useDelegateStore();
@@ -50,8 +51,6 @@ export default function Home() {
                 </p>
               </Button>
             </div>
-            {/* TODO a scroll bar here */}
-            {/* <div className='mt-5'></div> */}
           </section>
 
           {/* Features */}
@@ -84,8 +83,7 @@ export default function Home() {
             ))}
           </section>
 
-          {/* TODO */}
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </section>
 

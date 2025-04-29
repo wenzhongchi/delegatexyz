@@ -51,12 +51,12 @@ type FormValues = z.infer<(typeof formSchemas)['wallet']> &
 const DelegateForm: FC<{
   onFormUpdate?: (params: { isValid: boolean; values: FormValues }) => void;
 }> = ({ onFormUpdate }) => {
-  const { delegateType } = useDelegateStore();
+  const { delegateType, walletAddress } = useDelegateStore();
   const schema = formSchemas[delegateType];
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
-      wallet: '',
+      wallet: walletAddress,
       contract: '',
       tokenId: '',
       useShadow: false,
