@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DialogTitle } from '@radix-ui/react-dialog';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { FileTextIcon } from 'lucide-react';
@@ -23,6 +23,12 @@ const wallets = [
 export function DelegateDialog() {
   const { open, setOpen, setSubOpen, setWalletAddress } = useDelegateStore();
   const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    if (open) {
+      setQuery('');
+    }
+  }, [open]);
 
   const filtered = wallets.filter((w) =>
     `${w.address}${w.label}`.toLowerCase().includes(query.toLowerCase())
