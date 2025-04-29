@@ -2,12 +2,11 @@
 import { CogIcon, MoveRightIcon, RainbowIcon, SearchIcon, ShieldPlusIcon } from 'lucide-react';
 
 import { DelegateDialog } from '@/components/delegate-dialog/DelegateDialog';
-// import { Footer } from '@/components/layout/Footer';
+import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useDelegateStore } from '@/stores/delegate-store';
-import { Footer } from '@/components/layout/Footer';
 
 export default function Home() {
   const { setOpen } = useDelegateStore();

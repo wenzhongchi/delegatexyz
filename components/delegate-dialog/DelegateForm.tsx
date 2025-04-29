@@ -1,7 +1,12 @@
 import { FC, useEffect } from 'react';
-import { useForm, useFormState } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { CircleHelpIcon } from 'lucide-react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+
+import { TooltipWithStopPropagation } from './TooltipWithStopPropogation';
+
 import {
   Form,
   FormControl,
@@ -15,8 +20,6 @@ import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
 import { useDelegateStore } from '@/stores/delegate-store';
 import { DelegateType } from '@/types/enum';
-import { CircleHelpIcon } from 'lucide-react';
-import { TooltipWithStopPropagation } from './TooltipWithStopPropogation';
 
 const walletAddress = z
   .string()

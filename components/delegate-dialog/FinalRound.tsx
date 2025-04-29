@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+
 import confetti from 'canvas-confetti';
 
 const FinalRound = () => {
@@ -25,7 +26,7 @@ const FinalRound = () => {
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />
 
       <div className="relative z-10">
-        <h1 className="text-3xl font-semibold mb-4">🎉 You're all set!</h1>
+        <h1 className="text-3xl font-semibold mb-4">🎉 You&#39;re all set!</h1>
         <p className="text-muted-foreground mb-8">Your delegation has been successfully created.</p>
       </div>
     </div>

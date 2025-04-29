@@ -1,4 +1,5 @@
 import { FC, useEffect, useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 
@@ -6,9 +7,8 @@ import { Button } from '../ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '../ui/dialog';
 import { Progress } from '../ui/progress';
 
-import { useDelegateStore } from '@/stores/delegate-store';
 import { cn } from '@/lib/utils';
-import dynamic from 'next/dynamic';
+import { useDelegateStore } from '@/stores/delegate-store';
 
 const MAX_STEP = 3;
 
@@ -71,7 +71,7 @@ export const DelegateSubDialog: FC = () => {
           {step === 1 && <DelegateTypeSection />}
           {step === 2 && (
             <DelegateForm
-              onFormUpdate={({ isValid, values }) => {
+              onFormUpdate={({ isValid }) => {
                 setFormValidate(isValid);
               }}
             />
