@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'FunKit',
-  description: 'FunKit',
+  title: 'delegate.xyz',
+  description: 'delegate.xyz',
 };
 
 export default function RootLayout({

@@ -113,6 +113,14 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@theme {
+  --color-de-light: rgba(38, 38, 38, 0.7);
+  --color-de-shadow: #f2f2f2;
+  --color-de-yellow: #ebaf00;
+  --color-de-green: #04724d;
+  --color-de-purple: #a255ef;
+  --color-de-blue: #2b7fff;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;
